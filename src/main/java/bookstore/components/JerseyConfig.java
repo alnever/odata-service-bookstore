@@ -13,7 +13,9 @@ import javax.ws.rs.ApplicationPath;
 @Component
 @ApplicationPath("/odata")
 public class JerseyConfig extends ResourceConfig {
-    public JerseyConfig(BooksODataJPAServiceFactory serviceFactory, EntityManagerFactory emf) {
+    public JerseyConfig(
+            BooksODataJPAServiceFactory booksServiceFactory,
+            EntityManagerFactory emf) {
         ODataApplication app = new ODataApplication();
         app
                 .getClasses()
@@ -22,7 +24,7 @@ public class JerseyConfig extends ResourceConfig {
                         register(c);
                     }
                 });
-        register(new BooksRootLocator(serviceFactory));
+        register(new BooksRootLocator(booksServiceFactory));
         register(new EntityManagerFilter(emf));
     }
 }
