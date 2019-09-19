@@ -17,11 +17,15 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-jersey</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -41,11 +45,13 @@
         </dependency>
         <dependency>
             <groupId>org.apache.olingo</groupId>
-            <artifactId>olingo-odata-jpa-processor-core</artifactId>
+            <artifactId>olingo-odata2-jpa-processor-core</artifactId>
+            <version>2.0.11</version>
         </dependency>
         <dependency>
             <groupId>org.apache.olingo</groupId>
             <artifactId>olingo-odata2-jpa-processor-ref</artifactId>
+            <version>2.0.11</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.eclipse.persistence</groupId>
