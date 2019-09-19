@@ -24,9 +24,13 @@ public class Book {
     )
     private Set<Author> authors;
 
-    @ManyToOne
-    @JoinColumn(name = "genre_id", nullable = false, referencedColumnName = "id")
-    private Genre genre;
+    @ManyToMany
+    @JoinTable(
+            name="genre_book",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    private Set<Genre> genres;
 
     public Book() {
     }
@@ -34,7 +38,6 @@ public class Book {
     public Book(long id, String title, Genre genre) {
         this.id = id;
         this.title = title;
-        this.genre = genre;
     }
 
     public long getId() {
@@ -53,19 +56,19 @@ public class Book {
         this.title = title;
     }
 
-    public Genre getGenre() {
-        return genre;
-    }
-
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
-
     public Set<Author> getAuthors() {
         return authors;
     }
 
     public void setAuthors(Set<Author> authors) {
         this.authors = authors;
+    }
+
+    public Set<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(Set<Genre> genres) {
+        this.genres = genres;
     }
 }

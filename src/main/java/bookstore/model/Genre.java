@@ -16,8 +16,12 @@ public class Genre {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "genre")
-    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name="genre_book",
+            joinColumns = @JoinColumn(name = "genre_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id")
+    )
     private Set<Book> books;
 
     public Genre() {
@@ -45,11 +49,4 @@ public class Genre {
         this.name = name;
     }
 
-    public Set<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(Set<Book> books) {
-        this.books = books;
-    }
 }
